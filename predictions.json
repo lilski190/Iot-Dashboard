@@ -1,0 +1,23 @@
+[
+  {
+    "city":"Taipei",
+    "next_date":"2020-05-30",
+    "pred_temp":26.8,
+    "pred_hum":80.2,
+    "comfort":"☀️  Warm"
+  },
+  {
+    "city":"Taichung",
+    "next_date":"2020-05-30",
+    "pred_temp":26.3,
+    "pred_hum":79.7,
+    "comfort":"☀️  Warm"
+  },
+  {
+    "city":"Kaohsiung",
+    "next_date":"2020-05-30",
+    "pred_temp":29.4,
+    "pred_hum":73.7,
+    "comfort":"☀️  Warm"
+  }
+]

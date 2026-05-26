@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="global.css">
+
+    <title>Dashbaord.html</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     <script type="module" src="/main.js"></script>
+     
+    <div>
+        <h1>Weather Data</h1>
+    </div>
+
+<div>
+    <h3>Select City</h3>
+    <label>
+  <input type="radio" name="city" value="all" checked>
+  All
+</label>
+  <input type="radio" name="city" value="Taipei" > Taipei
+  <input type="radio" name="city" value="Taichung" > Taichung
+  <input type="radio" name="city" value="Kaohsiung" > Kaohsiung
+</div>
+
+
+
+    <div>
+    <h2>Current Weather</h2>
+   <div id="output_currentweather"></div>
+    </div>
+
+    <div id="prediction_card">
+        <h2>Weather Prediction</h2> 
+        <div id="output_prediction"></div>
+    </div>
+ 
+    <div>
+    <h2>Previous Weather</h2>
+    
+    <div class="chart-container">
+        <canvas id="temperatureChart"></canvas>
+        </div><div id="chart_data">
+    </div>
+
+    </div>
+
+    <div>
+    <h2>Min, Max, Avg</h2>
+    <p>TODO</p>   
+    <div id="output_avg"></div>
+    </div>
+ 
+
+
+</body>
+</html>
