@@ -1,7 +1,7 @@
 # Sensor Weather Dashboard
 Simple weather dashboard using sensor data from a JSON file.
 
-![Screenshot of weather dashboard](Dashboard,png)
+![Screenshot of weather dashboard](Dashboard.png)
 
 # Features
 - View current weather per city
