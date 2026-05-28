@@ -1,22 +1,19 @@
 let predictions = [];
 
-// JSON laden
 export async function loadPredictions() {
   try {
     const res = await fetch("./predictions.json");
     predictions = await res.json();
   } catch (err) {
-    console.error("Fehler beim Laden der JSON:", err);
+        console.error("Error when loading data", err);
   }
 }
 
-// ausgewählte Stadt holen
 export function getSelectedCity() {
   const selected = document.querySelector('input[name="city"]:checked');
   return selected ? selected.value : null;
 }
 
-// rendern
 export function renderPredictions() {
   const city = getSelectedCity();
   if (!city) return;
@@ -44,7 +41,7 @@ export function renderPredictions() {
   const result = predictions.find(item => item.city === city);
 
   if (!result) {
-    container.innerHTML = "<p>Keine Daten gefunden</p>";
+    container.innerHTML = "<p>No data found</p>";
     return;
   }
 
@@ -59,7 +56,6 @@ export function renderPredictions() {
   `;
 }
 
-// init
 export function init() {
   const allRadio = document.querySelector('input[name="city"][value="all"]');
   if (allRadio) {
@@ -70,8 +66,7 @@ export function init() {
     radio.addEventListener("change", renderPredictions);
   });
 
-  renderPredictions(); // wichtig: initial render
+  renderPredictions();
 }
 
-// START
 loadPredictions().then(init);
