@@ -1,6 +1,8 @@
 # Sensor Weather Dashboard
 Simple weather dashboard using sensor data from a JSON file.
 
+![Screenshot of weather dashboard](./Dashboard,png)
+
 # Features
 - View current weather per city
 - View Weather Prediction
@@ -20,7 +22,13 @@ Open the project in a local server and load:
 index.html
 ```
 
-# Data Fromat 
+# Data
+The data is gernerated in Colab and used as an JSON export
+
+## Colab
+The Colab Projekt can be found here: [Smart-City-Colab](https://colab.research.google.com/drive/1dLbjqbht3_L4Og_UpECO1DcWNCTqG8Z4?usp=sharing)
+
+## Data Format
 
 ```JSON
 {
