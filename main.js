@@ -1,6 +1,6 @@
 import { loadSensors } from "./sensors.js";
 
-import { initChart, renderTemperature } from "./dataCharts.js";
+import { initChart, renderTemperature, renderHumidity, renderBubbles } from "./dataCharts.js";
 
 import {
   renderCurrentWeather,
@@ -12,25 +12,25 @@ import {
   init
 } from "./predictions.js";
 
+import { renderCompareByDate, initCompareByDate } from "./compare.js";
+
 import { cityColors } from "./config.js";
 
 async function initApp() {
-  console.log("init Loaded")
 
-  // JSON laden
   await loadSensors();
 
-  // Komponenten initialisieren
   initCurrentWeather();
   init();
   initChart();
+  initCompareByDate();
  
-
-  // optional initial render
   renderCurrentWeather();
   renderPredictions();
   renderTemperature();
+  renderHumidity();
+  renderBubbles();
+  renderCompareByDate();
 }
 
-console.log("🔥 MAIN.JS LOADED");
 initApp();

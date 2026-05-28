@@ -1,34 +1,22 @@
 let sensors = [];
 
-/**
- * Lädt die Sensor-Daten aus der JSON Datei
- */
 export async function loadSensors() {
   try {
     const res = await fetch("/sensor_readings.json");
     sensors = await res.json();
   } catch (err) {
-    console.error("Fehler beim Laden der Sensor-Daten:", err);
+    console.error("Error when loading data", err);
   }
 }
 
-/**
- * Gibt alle Sensor-Daten zurück
- */
 export function getAllSensors() {
   return sensors;
 }
 
-/**
- * Gibt die Daten einer bestimmten Stadt zurück
- */
 export function getSensorsByCity(city) {
   return sensors.filter(item => item.location === city);
 }
 
-/**
- * Gibt den neuesten Sensorwert einer Stadt zurück
- */
 export function getLatestSensorByCity(city) {
   const filtered = getSensorsByCity(city);
 
@@ -41,17 +29,11 @@ export function getLatestSensorByCity(city) {
   });
 }
 
-/**
- * Berechnet Min, Max und Durchschnittswerte pro Stadt
- */
 export function getCityStatistics() {
   const stats = {};
-  console.log("Calculate Min, max avg")
-
   sensors.forEach(sensor => {
     const city = sensor.location;
 
-    // Stadt initialisieren
     if (!stats[city]) {
       stats[city] = {
         temperature: {
@@ -82,7 +64,6 @@ export function getCityStatistics() {
       };
     }
 
-    // Temperatur MIN
     if (sensor.temperature < stats[city].temperature.min.value) {
       stats[city].temperature.min = {
         value: sensor.temperature,
@@ -90,7 +71,6 @@ export function getCityStatistics() {
       };
     }
 
-    // Temperatur MAX
     if (sensor.temperature > stats[city].temperature.max.value) {
       stats[city].temperature.max = {
         value: sensor.temperature,
@@ -98,7 +78,6 @@ export function getCityStatistics() {
       };
     }
 
-    // Luftfeuchtigkeit MIN
     if (sensor.humidity < stats[city].humidity.min.value) {
       stats[city].humidity.min = {
         value: sensor.humidity,
@@ -106,7 +85,6 @@ export function getCityStatistics() {
       };
     }
 
-    // Luftfeuchtigkeit MAX
     if (sensor.humidity > stats[city].humidity.max.value) {
       stats[city].humidity.max = {
         value: sensor.humidity,
@@ -114,14 +92,13 @@ export function getCityStatistics() {
       };
     }
 
-    // Summen für Durchschnitt
     stats[city].temperature.sum += sensor.temperature;
     stats[city].humidity.sum += sensor.humidity;
 
     stats[city].count++;
   });
 
- // Durchschnitt berechnen
+
 Object.keys(stats).forEach(city => {
   stats[city].temperature.avg = Number(
     (stats[city].temperature.sum / stats[city].count).toFixed(2)
@@ -131,12 +108,16 @@ Object.keys(stats).forEach(city => {
     (stats[city].humidity.sum / stats[city].count).toFixed(2)
   );
 
-  // Summe entfernen
   delete stats[city].temperature.sum;
   delete stats[city].humidity.sum;
 });
 
-  console.log("stats:", stats)
-
   return stats;
+}
+
+export function compareCitiesByDate(date) {
+
+  return sensors.filter(sensor =>
+    sensor.timestamp === date
+  );
 }

@@ -5,14 +5,12 @@ import {
   getCityStatistics
 } from "/sensors.js";
 
-// ausgewählte Stadt holen
 export function getSelectedCity() {
   const selected = document.querySelector('input[name="city"]:checked');
   return selected ? selected.value : null;
 }
 
 export function renderMinMaxAvg(){
-   console.log("Render avg weather")
 
   const city = getSelectedCity();
   if (!city) return;
@@ -20,10 +18,7 @@ export function renderMinMaxAvg(){
   const container = document.getElementById("output_avg");
   if (!container) return;
 
-  // ALL CITIES
   if (city === "all") {
-
-    // eindeutige Städte holen
     const cities = [...new Set(
       getAllSensors().map(item => item.location)
     )];
@@ -58,13 +53,10 @@ export function renderMinMaxAvg(){
     return;
   }
 
-  // EINZELNE STADT
   const dataX = getCityStatistics();
-console.log("data x", dataX)
   const data = dataX[city]
-console.log("Avg für ein city", data)
   if (!data) {
-    container.innerHTML = "<p>Keine Daten gefunden</p>";
+    container.innerHTML = "<p>No data found</p>";
     return;
   }
 
@@ -84,10 +76,8 @@ console.log("Avg für ein city", data)
     </div>
   `;
 }
-// rendern
-export function renderCurrentWeather() {
 
-  console.log("Render current weather")
+export function renderCurrentWeather() {
 
   const city = getSelectedCity();
   if (!city) return;
@@ -95,10 +85,8 @@ export function renderCurrentWeather() {
   const container = document.getElementById("output_currentweather");
   if (!container) return;
 
-  // ALL CITIES
   if (city === "all") {
 
-    // eindeutige Städte holen
     const cities = [...new Set(
       getAllSensors().map(item => item.location)
     )];
@@ -126,11 +114,10 @@ export function renderCurrentWeather() {
     return;
   }
 
-  // EINZELNE STADT
   const data = getLatestSensorByCity(city);
 
   if (!data) {
-    container.innerHTML = "<p>Keine Daten gefunden</p>";
+    container.innerHTML = "<p>No data found</p>";
     return;
   }
 
@@ -144,9 +131,7 @@ export function renderCurrentWeather() {
   `;
 }
 
-// init
 export function initCurrentWeather() {
-console.log("innit current weather")
   const allRadio = document.querySelector(
     'input[name="city"][value="all"]'
   );
@@ -163,10 +148,9 @@ console.log("innit current weather")
     radio.addEventListener("change", renderMinMaxAvg);
   });
 
-  renderCurrentWeather(); // initial render
+  renderCurrentWeather(); 
 
   renderMinMaxAvg()
 }
 
-// START
 loadSensors().then(initCurrentWeather);

@@ -1,21 +1,21 @@
 .card-wrapper {
   display: flex;
   gap: 16px;
-  flex-wrap: wrap; /* wichtig: bricht um bei kleinen Screens */
+  flex-wrap: wrap; 
 }
 
 .card {
-  flex: 1 1 200px; /* responsive Karten */
+  flex: 1 1 200px; 
   border: 1px solid #ddd;
   padding: 12px;
   border-radius: 10px;
   background: white;
 }
 
-.card {
-  flex: 1 1 200px; /* responsive Karten */
-  border: 1px solid #ddd;
-  padding: 12px;
-  border-radius: 10px;
-  background: white;
-}
+.section{}
+
+.selcontainer{}
+
+.citysel{}
+
+.chartcont{}
