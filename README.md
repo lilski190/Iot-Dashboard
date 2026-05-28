@@ -16,17 +16,17 @@ Simple weather dashboard using sensor data from a JSON file.
 # Start
 Open the project in a local server and load:
 
-''' bash
+`` bash
 index.html
-'''
+```
 
 # Data Fromat 
 
-''' JSON
+```JSON
 {
   "timestamp": "2020-05-28",
   "location": "Taipei",
   "temperature": 27.9,
   "humidity": 84.0
 }
-'''
+``
